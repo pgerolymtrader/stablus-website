@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stablus – Guest Cottage in Pagoi, Corfu</title>
+
+  <!-- SEO -->
+  <meta name="description" content="Stablus is a charming guest cottage in the village of Pagoi, Corfu, Greece. Experience authentic island living in a peaceful, elegant retreat on the Ionian coast." />
+  <meta name="keywords" content="Stablus, cottage, Corfu, Pagoi, Greece, holiday rental, Ionian Islands, accommodation, guest house" />
+  <meta name="author" content="Stablus Cottage" />
+  <link rel="canonical" href="https://www.stablus-corfu.com" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Stablus – Guest Cottage in Pagoi, Corfu" />
+  <meta property="og:description" content="A peaceful, elegant retreat in the village of Pagoi, Corfu. Book direct or through Booking.com." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1200" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <style>
+    /* ─── Reset & Base ─────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    :root {
+      --navy:    #1C3A4A;
+      --gold:    #BFA37A;
+      --gold-lt: #D9C4A0;
+      --cream:   #F7F5F0;
+      --stone:   #E8E4DC;
+      --text:    #2C2C2C;
+      --muted:   #6B8090;
+      --white:   #FFFFFF;
+      --ff-head: 'Cormorant Garamond', Georgia, serif;
+      --ff-body: 'Jost', system-ui, sans-serif;
+      --section-pad: 100px 0;
+      --max-w: 1180px;
+    }
+
+    body {
+      font-family: var(--ff-body);
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+      font-weight: 300;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── Utility ─────────────────────────────────────── */
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 32px; }
+    .section { padding: var(--section-pad); }
+    .section--dark { background: var(--navy); color: var(--white); }
+    .section--stone { background: var(--stone); }
+    .section--white { background: var(--white); }
+
+    .eyebrow {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 16px;
+    }
+    .section--dark .eyebrow { color: var(--gold-lt); }
+
+    h1, h2, h3, h4 {
+      font-family: var(--ff-head);
+      font-weight: 400;
+      line-height: 1.15;
+    }
+    h1 { font-size: clamp(3rem, 7vw, 5.5rem); }
+    h2 { font-size: clamp(2rem, 4vw, 3rem); }
+    h3 { font-size: 1.5rem; }
+
+    .divider {
+      width: 48px; height: 1px;
+      background: var(--gold);
+      margin: 20px 0 32px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 14px 36px;
+      font-family: var(--ff-body);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    .btn-primary {
+      background: var(--gold);
+      color: var(--navy);
+    }
+    .btn-primary:hover { background: var(--gold-lt); }
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+    }
+    .btn-outline:hover { background: var(--gold); color: var(--navy); }
+    .btn-navy {
+      background: var(--navy);
+      color: var(--white);
+    }
+    .btn-navy:hover { background: #254d62; }
+    .btn-white-outline {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.6);
+      color: var(--white);
+    }
+    .btn-white-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* ─── Navigation ──────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 24px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      transition: background 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,0.97);
+      padding: 16px 32px;
+      box-shadow: 0 1px 20px rgba(0,0,0,0.07);
+    }
+    nav.scrolled .nav-logo { color: var(--navy); }
+    nav.scrolled .nav-links a { color: var(--text); }
+    nav.scrolled .nav-links a:hover { color: var(--gold); }
+
+    .nav-logo {
+      font-family: var(--ff-head);
+      font-size: 1.6rem;
+      font-weight: 400;
+      letter-spacing: 0.05em;
+      color: var(--white);
+      transition: color 0.4s;
+    }
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav-links a {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.85);
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: var(--gold-lt); }
+
+    .nav-book-btn {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 10px 24px;
+      background: var(--gold);
+      color: var(--navy);
+      border: none;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .nav-book-btn:hover { background: var(--gold-lt); }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .hamburger span { display: block; width: 24px; height: 1.5px; background: var(--white); transition: background 0.4s; }
+    nav.scrolled .hamburger span { background: var(--navy); }
+
+    /* ─── Hero ────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1533105079780-92b9be482077?w=1600&q=80');
+      background-size: cover;
+      background-position: center 40%;
+      transform: scale(1.05);
+      transition: transform 0.1s linear;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(10,25,35,0.45) 0%,
+        rgba(10,25,35,0.35) 50%,
+        rgba(10,25,35,0.65) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: var(--white);
+      max-width: 760px;
+      padding: 0 24px;
+    }
+    .hero-location {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+      margin-bottom: 20px;
+    }
+    .hero-location svg { width: 12px; height: 12px; }
+    .hero-content h1 {
+      font-size: clamp(4rem, 10vw, 7rem);
+      font-weight: 300;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .hero-content .hero-subtitle {
+      font-family: var(--ff-head);
+      font-style: italic;
+      font-size: clamp(1.2rem, 2.5vw, 1.7rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .hero-scroll {
+      position: absolute;
+      bottom: 36px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,0.6);
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .hero-scroll-line {
+      width: 1px; height: 40px;
+      background: rgba(255,255,255,0.4);
+      animation: scrollPulse 2s ease-in-out infinite;
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 0.4; transform: scaleY(1); }
+      50% { opacity: 1; transform: scaleY(0.6); }
+    }
+
+    /* ─── About ───────────────────────────────────────── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .about-image-wrap {
+      position: relative;
+    }
+    .about-image-wrap img {
+      width: 100%;
+      height: 520px;
+      object-fit: cover;
+    }
+    .about-image-badge {
+      position: absolute;
+      bottom: -24px;
+      right: -24px;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 24px 28px;
+      text-align: center;
+    }
+    .about-image-badge .num {
+      font-family: var(--ff-head);
+      font-size: 2.2rem;
+      line-height: 1;
+      display: block;
+    }
+    .about-image-badge .label {
+      font-size: 10px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-top: 4px;
+      display: block;
+    }
+    .about-text p {
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+    .about-features {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 32px;
+      margin-top: 32px;
+    }
+    .about-feature {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+    }
+    .about-feature::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--gold);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── Gallery ─────────────────────────────────────── */
+    .gallery-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 40px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 260px 260px;
+      gap: 12px;
+    }
+    .gallery-grid .g-item {
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+    }
+    .gallery-grid .g-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+    .gallery-grid .g-item:hover img { transform: scale(1.05); }
+    .gallery-grid .g-item:first-child {
+      grid-row: 1 / 3;
+    }
+    .gallery-grid .g-item:nth-child(4) {
+      grid-row: 1 / 3;
+      grid-column: 3;
+    }
+    .gallery-overlay {
+      position: absolute; inset: 0;
+      background: rgba(28,58,74,0);
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .g-item:hover .gallery-overlay { background: rgba(28,58,74,0.25); }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; object-fit: contain; }
+    .lightbox-close {
+      position: absolute;
+      top: 24px; right: 32px;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+    }
+
+    /* ─── Amenities ───────────────────────────────────── */
+    .amenities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px 24px;
+      margin-top: 56px;
+    }
+    .amenity-item {
+      text-align: center;
+    }
+    .amenity-icon {
+      width: 48px; height: 48px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--gold);
+    }
+    .amenity-icon svg { width: 20px; height: 20px; }
+    .amenity-item h4 {
+      font-family: var(--ff-body);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 6px;
+    }
+    .amenity-item p {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    /* ─── Local Area ──────────────────────────────────── */
+    .places-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .place-card {
+      background: var(--white);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .place-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.1);
+    }
+    .place-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .place-card-body {
+      padding: 24px;
+    }
+    .place-tag {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 8px;
+    }
+    .place-card h3 {
+      font-family: var(--ff-head);
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+    }
+    .place-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+    .place-distance {
+      margin-top: 14px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+    }
+
+    /* ─── Reviews ─────────────────────────────────────── */
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .review-card {
+      background: var(--white);
+      padding: 36px 32px;
+      position: relative;
+    }
+    .review-quote {
+      font-family: var(--ff-head);
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--gold);
+      opacity: 0.3;
+      position: absolute;
+      top: 16px;
+      left: 28px;
+    }
+    .review-stars {
+      display: flex;
+      gap: 3px;
+      margin-bottom: 16px;
+    }
+    .review-stars span { color: var(--gold); font-size: 14px; }
+    .review-card blockquote {
+      font-family: var(--ff-head);
+      font-style: italic;
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 20px;
+    }
+    .review-author {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .review-source {
+      font-size: 11px;
+      color: var(--muted);
+      opacity: 0.6;
+    }
+    .reviews-cta {
+      text-align: center;
+      margin-top: 48px;
+    }
+
+    /* ─── Booking ─────────────────────────────────────── */
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 64px;
+      align-items: start;
+      margin-top: 56px;
+    }
+    .booking-direct h3 {
+      font-family: var(--ff-head);
+      font-size: 1.8rem;
+      margin-bottom: 12px;
+    }
+    .booking-direct p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin-bottom: 28px;
+    }
+    .booking-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      padding: 12px 16px;
+      border: 1px solid var(--stone);
+      background: var(--cream);
+      font-family: var(--ff-body);
+      font-size: 0.9rem;
+      color: var(--text);
+      outline: none;
+      transition: border-color 0.3s;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--gold);
+    }
+    .form-group textarea { resize: vertical; min-height: 100px; }
+    .form-note {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 4px;
+    }
+    .form-success {
+      display: none;
+      background: #d4edda;
+      border: 1px solid #c3e6cb;
+      color: #155724;
+      padding: 16px 20px;
+      font-size: 0.9rem;
+      border-radius: 2px;
+    }
+
+    .booking-platform {
+      background: var(--navy);
+      color: var(--white);
+      padding: 40px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 20px;
+    }
+    .booking-platform .bp-logo {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-lt);
+    }
+    .booking-platform h3 {
+      font-family: var(--ff-head);
+      font-size: 1.8rem;
+    }
+    .booking-platform p {
+      font-size: 0.9rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.7;
+    }
+    .booking-platform .btn { align-self: flex-start; }
+    .booking-perks {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .booking-perks li {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.7);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .booking-perks li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: 600;
+      font-size: 12px;
+    }
+
+    /* ─── Instagram ───────────────────────────────────── */
+    .instagram-section {
+      padding: 80px 0;
+      text-align: center;
+    }
+    .instagram-section h2 { margin-bottom: 8px; }
+    .instagram-section p {
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .instagram-handle {
+      font-family: var(--ff-head);
+      font-style: italic;
+      font-size: 1.4rem;
+      color: var(--navy);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 40px;
+    }
+    .insta-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      margin: 40px 0;
+    }
+    .insta-item {
+      overflow: hidden;
+      aspect-ratio: 1;
+      position: relative;
+    }
+    .insta-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    .insta-item:hover img { transform: scale(1.07); }
+    .insta-item-overlay {
+      position: absolute; inset: 0;
+      background: rgba(28,58,74,0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+    .insta-item:hover .insta-item-overlay { background: rgba(28,58,74,0.35); }
+    .insta-item-overlay svg {
+      opacity: 0;
+      color: white;
+      width: 28px; height: 28px;
+      transition: opacity 0.3s;
+    }
+    .insta-item:hover .insta-item-overlay svg { opacity: 1; }
+
+    /* ─── Footer ──────────────────────────────────────── */
+    footer {
+      background: #111D24;
+      color: rgba(255,255,255,0.6);
+      padding: 64px 0 32px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      padding-bottom: 48px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      margin-bottom: 32px;
+    }
+    .footer-brand .logo {
+      font-family: var(--ff-head);
+      font-size: 2rem;
+      font-weight: 400;
+      color: var(--white);
+      letter-spacing: 0.08em;
+      margin-bottom: 16px;
+    }
+    .footer-brand p { font-size: 0.9rem; line-height: 1.7; max-width: 280px; }
+    .footer-col h4 {
+      font-family: var(--ff-body);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col ul li { font-size: 0.9rem; }
+    .footer-col ul a { transition: color 0.2s; }
+    .footer-col ul a:hover { color: var(--gold-lt); }
+    .footer-address p { font-size: 0.9rem; line-height: 1.9; }
+    .footer-social {
+      display: flex;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .footer-social a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.3s, color 0.3s;
+      color: rgba(255,255,255,0.6);
+    }
+    .footer-social a:hover { border-color: var(--gold); color: var(--gold); }
+    .footer-social a svg { width: 15px; height: 15px; }
+    .footer-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    /* ─── Responsive ──────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .about-grid { grid-template-columns: 1fr; gap: 48px; }
+      .about-image-wrap { order: -1; }
+      .about-image-wrap img { height: 380px; }
+      .about-image-badge { bottom: -16px; right: 16px; }
+      .amenities-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      :root { --section-pad: 72px 0; }
+      .nav-links, .nav-book-btn { display: none; }
+      .hamburger { display: flex; }
+      nav.open .nav-links {
+        display: flex;
+        flex-direction: column;
+        position: fixed;
+        top: 0; left: 0; right: 0; bottom: 0;
+        background: var(--navy);
+        align-items: center;
+        justify-content: center;
+        gap: 32px;
+        z-index: 99;
+      }
+      nav.open .nav-links a {
+        font-size: 1.5rem;
+        letter-spacing: 0.15em;
+        color: var(--white);
+      }
+      .gallery-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(3, 220px);
+      }
+      .gallery-grid .g-item:first-child { grid-row: auto; }
+      .gallery-grid .g-item:nth-child(4) { grid-row: auto; grid-column: auto; }
+      .places-grid { grid-template-columns: 1fr; }
+      .reviews-grid { grid-template-columns: 1fr; }
+      .booking-grid { grid-template-columns: 1fr; gap: 40px; }
+      .form-row { grid-template-columns: 1fr; }
+      .insta-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
+      .amenities-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 20px; }
+      .hero-actions { flex-direction: column; align-items: center; }
+      .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(5, 240px); }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════ NAVIGATION ═══════════════ -->
+<nav id="navbar">
+  <a href="#hero" class="nav-logo">Stablus</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about">About</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+    <li><a href="#explore">Explore</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#book">Book</a></li>
+  </ul>
+  <a href="#book" class="btn nav-book-btn">Book Now</a>
+  <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- ═══════════════ HERO ═══════════════ -->
+<section id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <div class="hero-location">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
+      Pagoi · Corfu · Greece
+    </div>
+    <h1>Stablus</h1>
+    <p class="hero-subtitle">A quiet retreat on the Ionian island</p>
+    <div class="hero-actions">
+      <a href="#book" class="btn btn-primary">Reserve Your Stay</a>
+      <a href="#about" class="btn btn-white-outline">Discover More</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <div class="hero-scroll-line"></div>
+    Scroll
+  </div>
+</section>
+
+<!-- ═══════════════ ABOUT ═══════════════ -->
+<section id="about" class="section section--white">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-image-wrap">
+        <img src="https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80" alt="Stablus Cottage exterior" loading="lazy" />
+        <div class="about-image-badge">
+          <span class="num">★ 9.4</span>
+          <span class="label">Guest Score</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <span class="eyebrow">Welcome to Stablus</span>
+        <h2>Where Corfu slows down to its most beautiful pace</h2>
+        <div class="divider"></div>
+        <p>Nestled in the tranquil village of Pagoi on the north-western coast of Corfu, Stablus is a lovingly maintained guest cottage that blends authentic Greek character with thoughtful modern comforts.</p>
+        <p>Wake to the sound of olive trees rustling in the Ionian breeze. Spend your days exploring hidden coves, Byzantine trails, and centuries-old villages — then return to the cool, whitewashed serenity of your own private retreat.</p>
+        <p>Whether you are seeking a romantic escape, a family holiday, or simply a few days of genuine rest, Stablus offers the space and stillness to find it.</p>
+        <div class="about-features">
+          <div class="about-feature">Private Cottage</div>
+          <div class="about-feature">Sea View Terrace</div>
+          <div class="about-feature">Fully Equipped Kitchen</div>
+          <div class="about-feature">Free Parking</div>
+          <div class="about-feature">Air Conditioning</div>
+          <div class="about-feature">Fast Wi-Fi</div>
+          <div class="about-feature">Linen & Towels</div>
+          <div class="about-feature">Daily Housekeeping</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ GALLERY ═══════════════ -->
+<section id="gallery" class="section section--stone">
+  <div class="container">
+    <div class="gallery-header">
+      <div>
+        <span class="eyebrow">Photo Gallery</span>
+        <h2>Life at Stablus</h2>
+      </div>
+      <p style="color:var(--muted);max-width:300px;text-align:right;font-size:0.9rem;">A glimpse of the spaces, views, and quiet moments that await you.</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="g-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=800&q=80" alt="Cottage exterior" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80" alt="Interior living space" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=800&q=80" alt="Terrace view" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=800&q=80" alt="Corfu coastline view" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+      <div class="g-item" onclick="openLightbox(this)">
+        <img src="https://images.unsplash.com/photo-1602343168117-bb8ced3f3dbe?w=800&q=80" alt="Bedroom" loading="lazy" />
+        <div class="gallery-overlay"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+  <img id="lightboxImg" src="" alt="Gallery image" />
+</div>
+
+<!-- ═══════════════ AMENITIES ═══════════════ -->
+<section class="section section--dark">
+  <div class="container">
+    <div style="text-align:center; max-width:560px; margin:0 auto;">
+      <span class="eyebrow">Amenities</span>
+      <h2 style="color:var(--white);">Everything you need, nothing you don't</h2>
+    </div>
+    <div class="amenities-grid">
+      <!-- WiFi -->
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1.2 8.4C5.2 4.4 10.3 2.4 12 2.4s6.8 2 10.8 6M5 12.5c1.9-1.9 4.3-2.9 7-2.9s5.1 1 7 2.9M8.5 16.5c1-.9 2.2-1.5 3.5-1.5s2.5.6 3.5 1.5M12 20.5h.01"/></svg>
+        </div>
+        <h4>High-Speed Wi-Fi</h4>
+        <p>Fibre broadband throughout</p>
+      </div>
+      <!-- AC -->
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3v18M3 12h18M5.64 5.64l12.72 12.72M18.36 5.64 5.64 18.36"/></svg>
+        </div>
+        <h4>Air Conditioning</h4>
+        <p>All rooms climate controlled</p>
+      </div>
+      <!-- Kitchen -->
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="1"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h4>Full Kitchen</h4>
+        <p>Equipped with all essentials</p>
+      </div>
+      <!-- Terrace -->
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 18h18M5 18V9m14 9V9M3 9h18M8 9V6m8 3V6M8 6a4 4 0 018 0"/></svg>
+        </div>
+        <h4>Private Terrace</h4>
+        <p>Panoramic Ionian views</p>
+      </div>
+      <!-- Parking -->
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 010 6H9"/></svg>
+        </div>
+        <h4>Free Parking</h4>
+        <p>On-site private space</p>
+      </div>
+      <!-- Linens -->
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        </div>
+        <h4>Linen & Towels</h4>
+        <p>Fresh linens provided</p>
+      </div>
+      <!-- Pets -->
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4.5 11.5A4 4 0 018 8M19.5 11.5A4 4 0 0016 8M12 2a3 3 0 000 6M7 20s1-3 5-3 5 3 5 3"/></svg>
+        </div>
+        <h4>Pet Friendly</h4>
+        <p>Well-behaved pets welcome</p>
+      </div>
+      <!-- BBQ -->
+      <div class="amenity-item">
+        <div class="amenity-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 12h16M4 12a8 8 0 0116 0M9 12v8m6-8v8M7 20h10"/></svg>
+        </div>
+        <h4>Outdoor BBQ</h4>
+        <p>Al fresco dining under the stars</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ LOCAL AREA ═══════════════ -->
+<section id="explore" class="section section--white">
+  <div class="container">
+    <div style="max-width:560px;">
+      <span class="eyebrow">Explore Corfu</span>
+      <h2>Pagoi is your gateway to the island's best</h2>
+      <div class="divider"></div>
+      <p style="color:var(--muted);">Stablus sits in the unspoiled north-west of Corfu, close to some of the island's most celebrated beaches, villages, and natural wonders.</p>
+    </div>
+    <div class="places-grid">
+      <div class="place-card">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Sidari Beach" loading="lazy" />
+        <div class="place-card-body">
+          <div class="place-tag">Beach</div>
+          <h3>Sidari & Canal d'Amour</h3>
+          <p>Famous for its unique sandstone formations and warm, turquoise waters. Legend has it couples who swim through the canal are bound together forever.</p>
+          <p class="place-distance">↠ 12 km from Stablus</p>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&q=80" alt="Corfu Old Town" loading="lazy" />
+        <div class="place-card-body">
+          <div class="place-tag">Culture</div>
+          <h3>Corfu Old Town</h3>
+          <p>A UNESCO World Heritage Site of Venetian, French and British architecture, with winding alleyways, vibrant markets, and superb waterfront tavernas.</p>
+          <p class="place-distance">↠ 35 km from Stablus</p>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=600&q=80" alt="Olive groves Corfu" loading="lazy" />
+        <div class="place-card-body">
+          <div class="place-tag">Nature</div>
+          <h3>Corfu's Ancient Olive Groves</h3>
+          <p>With over four million olive trees, Corfu's interior is a lush paradise perfect for walking, cycling, and connecting with the island's deep agricultural heritage.</p>
+          <p class="place-distance">↠ On your doorstep</p>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="https://images.unsplash.com/photo-1414609245224-aea7d7e68894?w=600&q=80" alt="Loggas sunset beach" loading="lazy" />
+        <div class="place-card-body">
+          <div class="place-tag">Beach</div>
+          <h3>Logas Sunset Beach</h3>
+          <p>Perched on dramatic cliffs above the sea, Logas (Peroulades) offers one of Greece's most photographed sunsets. A short and magical drive away.</p>
+          <p class="place-distance">↠ 8 km from Stablus</p>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80" alt="Local taverna" loading="lazy" />
+        <div class="place-card-body">
+          <div class="place-tag">Dining</div>
+          <h3>Local Tavernas & Cuisine</h3>
+          <p>Discover authentic Corfiot flavours — sofrito, bourdeto, fresh seafood — in village tavernas where recipes have been passed down for generations.</p>
+          <p class="place-distance">↠ Within the village</p>
+        </div>
+      </div>
+      <div class="place-card">
+        <img src="https://images.unsplash.com/photo-1520175480921-4edfa2983e0f?w=600&q=80" alt="Agios Stefanos beach" loading="lazy" />
+        <div class="place-card-body">
+          <div class="place-tag">Beach</div>
+          <h3>Agios Stefanos</h3>
+          <p>A peaceful, family-friendly fishing village beach just minutes away. Crystal-clear shallows, excellent snorkelling, and a handful of charming beach tavernas.</p>
+          <p class="place-distance">↠ 6 km from Stablus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ REVIEWS ═══════════════ -->
+<section id="reviews" class="section section--stone">
+  <div class="container">
+    <div style="text-align:center; max-width:500px; margin:0 auto;">
+      <span class="eyebrow">Guest Reviews</span>
+      <h2>What our guests say</h2>
+      <div class="divider" style="margin:20px auto 0;"></div>
+    </div>
+    <div class="reviews-grid">
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote>Absolutely magical. The cottage is exactly as described — quiet, beautifully kept, and the terrace view over the olive groves took our breath away every morning.</blockquote>
+        <div class="review-author">Emma & James T.</div>
+        <div class="review-source">Reviewed on Booking.com · United Kingdom</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote>Pagoi is the real Corfu — not the tourist crowds. Stablus gave us the perfect base to explore. The host was wonderfully helpful and the cottage spotless.</blockquote>
+        <div class="review-author">Familie Bergmann</div>
+        <div class="review-source">Reviewed on Booking.com · Germany</div>
+      </div>
+      <div class="review-card">
+        <div class="review-quote">"</div>
+        <div class="review-stars">
+          <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+        </div>
+        <blockquote>We've stayed in many Greek properties over the years — Stablus stands out. Authentic, serene, and incredibly good value. We'll be back without a doubt.</blockquote>
+        <div class="review-author">Sophie M.</div>
+        <div class="review-source">Reviewed on Booking.com · France</div>
+      </div>
+    </div>
+    <div class="reviews-cta">
+      <a href="https://www.booking.com/hotel/gr/stablus.html#tab-reviews" target="_blank" rel="noopener" class="btn btn-navy">Read All Reviews on Booking.com</a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ BOOK ═══════════════ -->
+<section id="book" class="section section--white">
+  <div class="container">
+    <div style="max-width:560px;">
+      <span class="eyebrow">Reservations</span>
+      <h2>Plan your Corfu escape</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="booking-grid">
+
+      <!-- Direct Request Form -->
+      <div class="booking-direct">
+        <h3>Request a Direct Booking</h3>
+        <p>Send us your dates and we'll get back to you within 24 hours to confirm availability and arrange everything personally.</p>
+        <form class="booking-form" id="bookingForm" onsubmit="submitBooking(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fname">First Name</label>
+              <input type="text" id="fname" name="fname" placeholder="Your first name" required />
+            </div>
+            <div class="form-group">
+              <label for="lname">Last Name</label>
+              <input type="text" id="lname" name="lname" placeholder="Your last name" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email" placeholder="your@email.com" required />
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="checkin">Check-in Date</label>
+              <input type="date" id="checkin" name="checkin" required />
+            </div>
+            <div class="form-group">
+              <label for="checkout">Check-out Date</label>
+              <input type="date" id="checkout" name="checkout" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="guests">Number of Guests</label>
+              <select id="guests" name="guests" required>
+                <option value="">Select</option>
+                <option value="1">1 guest</option>
+                <option value="2">2 guests</option>
+                <option value="3">3 guests</option>
+                <option value="4">4 guests</option>
+                <option value="5+">5+ guests</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone (optional)</label>
+              <input type="tel" id="phone" name="phone" placeholder="+30 or international" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" placeholder="Any special requests or questions…"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary" style="margin-top:8px;">Send Booking Request</button>
+          <p class="form-note">We'll respond within 24 hours. No payment required to make a request.</p>
+        </form>
+        <div class="form-success" id="formSuccess">
+          ✓ Your request has been sent! We'll be in touch within 24 hours.
+        </div>
+      </div>
+
+      <!-- Booking.com Card -->
+      <div class="booking-platform">
+        <div class="bp-logo">Also Available On</div>
+        <h3>Booking.com</h3>
+        <p>Prefer to book with instant confirmation and buyer protection? Find Stablus on Booking.com for secure online reservations.</p>
+        <ul class="booking-perks">
+          <li>Instant booking confirmation</li>
+          <li>Secure payment processing</li>
+          <li>Free cancellation options available</li>
+          <li>24/7 Booking.com customer support</li>
+        </ul>
+        <a href="https://www.booking.com/hotel/gr/stablus.html" target="_blank" rel="noopener" class="btn btn-primary">
+          View on Booking.com
+        </a>
+        <div style="border-top:1px solid rgba(255,255,255,0.1); padding-top:20px; width:100%;">
+          <p style="font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gold-lt);margin-bottom:8px;">Direct Booking Benefit</p>
+          <p>Book directly with us and we'll include a welcome basket of local Corfiot produce upon your arrival.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════ INSTAGRAM ═══════════════ -->
+<section class="instagram-section section--cream">
+  <div class="container">
+    <span class="eyebrow">Follow Our Story</span>
+    <h2>Stablus on Instagram</h2>
+    <p>Daily moments from the cottage, the village, and the island — follow along for travel inspiration.</p>
+    <a href="https://www.instagram.com/stablus_cottage_pagi.corfu/" target="_blank" rel="noopener" class="instagram-handle">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      @stablus_cottage_pagi.corfu
+    </a>
+    <div class="insta-grid">
+      <a class="insta-item" href="https://www.instagram.com/stablus_cottage_pagi.corfu/" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?w=400&q=80" alt="Corfu coast" loading="lazy" />
+        <div class="insta-item-overlay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </a>
+      <a class="insta-item" href="https://www.instagram.com/stablus_cottage_pagi.corfu/" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1570168007204-dfb528c6958f?w=400&q=80" alt="Greek house" loading="lazy" />
+        <div class="insta-item-overlay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </a>
+      <a class="insta-item" href="https://www.instagram.com/stablus_cottage_pagi.corfu/" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=400&q=80" alt="Beach" loading="lazy" />
+        <div class="insta-item-overlay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </a>
+      <a class="insta-item" href="https://www.instagram.com/stablus_cottage_pagi.corfu/" target="_blank" rel="noopener">
+        <img src="https://images.unsplash.com/photo-1504214208698-ea1916a2195a?w=400&q=80" alt="Olive groves" loading="lazy" />
+        <div class="insta-item-overlay">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+        </div>
+      </a>
+    </div>
+    <a href="https://www.instagram.com/stablus_cottage_pagi.corfu/" target="_blank" rel="noopener" class="btn btn-navy">Follow on Instagram</a>
+  </div>
+</section>
+
+<!-- ═══════════════ FOOTER ═══════════════ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo">Stablus</div>
+        <p>A guest cottage in the village of Pagoi, north-western Corfu, Greece. A place of quiet beauty on the Ionian Sea.</p>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/stablus_cottage_pagi.corfu/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="https://www.booking.com/hotel/gr/stablus.html" target="_blank" rel="noopener" aria-label="Booking.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigate</h4>
+        <ul>
+          <li><a href="#about">About Stablus</a></li>
+          <li><a href="#gallery">Photo Gallery</a></li>
+          <li><a href="#explore">Explore Corfu</a></li>
+          <li><a href="#reviews">Guest Reviews</a></li>
+          <li><a href="#book">Book a Stay</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Book With Us</h4>
+        <ul>
+          <li><a href="#book">Direct Enquiry</a></li>
+          <li><a href="https://www.booking.com/hotel/gr/stablus.html" target="_blank" rel="noopener">Booking.com</a></li>
+          <li><a href="https://www.instagram.com/stablus_cottage_pagi.corfu/" target="_blank" rel="noopener">Instagram DM</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-address">
+        <h4>Find Us</h4>
+        <p>
+          Stablus Guest Cottage<br />
+          Pagoi<br />
+          490 83 Corfu<br />
+          Greece
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 Stablus Cottage · Pagoi, Corfu, Greece</span>
+      <span>Designed with care for our guests</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════ SCRIPTS ═══════════════ -->
+<script>
+  // Nav scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // Hamburger menu
+  function toggleMenu() {
+    navbar.classList.toggle('open');
+    document.body.style.overflow = navbar.classList.contains('open') ? 'hidden' : '';
+  }
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.addEventListener('click', () => {
+      navbar.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Parallax hero
+  const heroBg = document.getElementById('heroBg');
+  window.addEventListener('scroll', () => {
+    const offset = window.scrollY;
+    if (offset < window.innerHeight) {
+      heroBg.style.transform = `scale(1.05) translateY(${offset * 0.25}px)`;
+    }
+  });
+
+  // Lightbox
+  function openLightbox(el) {
+    const src = el.querySelector('img').src;
+    document.getElementById('lightboxImg').src = src;
+    document.getElementById('lightbox').classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox() {
+    document.getElementById('lightbox').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape') closeLightbox();
+  });
+
+  // Booking form — sends via mailto
+  function submitBooking(e) {
+    e.preventDefault();
+    const f = e.target;
+    const fname = f.fname.value;
+    const lname = f.lname.value;
+    const email = f.email.value;
+    const checkin = f.checkin.value;
+    const checkout = f.checkout.value;
+    const guests = f.guests.value;
+    const phone = f.phone.value;
+    const message = f.message.value;
+
+    const subject = encodeURIComponent(`Booking Request – ${fname} ${lname} | ${checkin} to ${checkout}`);
+    const body = encodeURIComponent(
+`New booking request from the Stablus website:
+
+Name: ${fname} ${lname}
+Email: ${email}
+Phone: ${phone || 'Not provided'}
+Check-in: ${checkin}
+Check-out: ${checkout}
+Guests: ${guests}
+
+Message:
+${message || 'None'}
+`);
+
+    window.location.href = `mailto:pgerolymtrader@gmail.com?subject=${subject}&body=${body}`;
+
+    f.style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  }
+
+  // Set min date for booking inputs
+  const today = new Date().toISOString().split('T')[0];
+  document.getElementById('checkin').min = today;
+  document.getElementById('checkout').min = today;
+  document.getElementById('checkin').addEventListener('change', function() {
+    document.getElementById('checkout').min = this.value;
+  });
+
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.place-card, .review-card, .amenity-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
