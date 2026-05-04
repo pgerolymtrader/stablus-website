@@ -811,6 +811,158 @@
       .hero-actions { flex-direction: column; align-items: center; }
       .gallery-grid { grid-template-columns: 1fr; grid-template-rows: repeat(5, 240px); }
     }
+
+    /* ─── Booking Calendar ─────────────────────────────── */
+    .cal-wrap {
+      border: 1px solid var(--stone);
+      overflow: hidden;
+      margin-top: 4px;
+    }
+    .cal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 20px;
+      background: var(--navy);
+    }
+    .cal-nav {
+      background: none;
+      border: 1px solid rgba(255,255,255,0.2);
+      color: var(--gold-lt);
+      font-size: 1.3rem;
+      line-height: 1.2;
+      cursor: pointer;
+      padding: 1px 11px 3px;
+      transition: border-color 0.2s, color 0.2s;
+      font-family: var(--ff-body);
+    }
+    .cal-nav:hover:not(:disabled) { border-color: var(--gold); color: var(--gold); }
+    .cal-nav:disabled { opacity: 0.25; cursor: not-allowed; }
+    .cal-month-label {
+      font-family: var(--ff-head);
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+      color: var(--white);
+    }
+    .cal-weekdays {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      background: rgba(28,58,74,0.06);
+      border-bottom: 1px solid var(--stone);
+    }
+    .cal-weekdays span {
+      text-align: center;
+      padding: 9px 0 8px;
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .cal-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 1px;
+      background: var(--stone);
+    }
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      cursor: pointer;
+      background: var(--white);
+      transition: background 0.15s, color 0.15s;
+      user-select: none;
+    }
+    .cal-day.empty { background: var(--cream); cursor: default; }
+    .cal-day.past,
+    .cal-day.past:hover { color: #ccc; background: var(--cream); cursor: not-allowed; }
+    .cal-day.unavailable,
+    .cal-day.unavailable:hover {
+      color: #ccc;
+      background: #f5f3ef;
+      cursor: not-allowed;
+      text-decoration: line-through;
+      text-decoration-color: #ccc;
+    }
+    .cal-day.today { font-weight: 700; }
+    .cal-day:not(.past):not(.unavailable):not(.empty):not(.selected-start):not(.selected-end):hover {
+      background: var(--gold-lt);
+      color: var(--navy);
+    }
+    .cal-day.in-range { background: rgba(191,163,122,0.22); color: var(--navy); }
+    .cal-day.selected-start,
+    .cal-day.selected-end {
+      background: var(--navy) !important;
+      color: var(--white) !important;
+      font-weight: 600;
+    }
+    .cal-legend {
+      display: flex;
+      gap: 18px;
+      padding: 9px 16px 10px;
+      border-top: 1px solid var(--stone);
+      background: var(--cream);
+      flex-wrap: wrap;
+    }
+    .cal-legend-item {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+    .cal-legend-swatch {
+      width: 13px; height: 13px;
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+    .cal-loading {
+      text-align: center;
+      padding: 52px 20px;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.06em;
+      background: var(--white);
+    }
+    .cal-fetch-error {
+      padding: 8px 16px;
+      font-size: 11px;
+      color: #8B5E3C;
+      background: #FDF3E7;
+      border-top: 1px solid #F0D9BC;
+    }
+    .date-summary {
+      display: flex;
+      margin-top: 10px;
+      border: 1px solid var(--stone);
+      overflow: hidden;
+    }
+    .date-summary-item {
+      flex: 1;
+      padding: 11px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      background: var(--cream);
+    }
+    .date-summary-item + .date-summary-item { border-left: 1px solid var(--stone); }
+    .ds-label {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .ds-value { font-size: 0.88rem; color: var(--text); font-weight: 500; }
+    .ds-value.empty { color: var(--muted); font-style: italic; font-weight: 400; }
+    @media (max-width: 480px) {
+      .cal-day { font-size: 0.72rem; }
+      .cal-weekdays span { font-size: 9px; }
+    }
+
   </style>
 </head>
 <body>
@@ -1164,15 +1316,27 @@
             <label for="email">Email Address</label>
             <input type="email" id="email" name="email" placeholder="your@email.com" required />
           </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="checkin">Check-in Date</label>
-              <input type="date" id="checkin" name="checkin" required />
+          <div class="form-group">
+            <label>Availability — select your dates</label>
+            <div class="cal-wrap" id="bookingCal">
+              <div class="cal-loading">Loading availability from Booking.com…</div>
             </div>
-            <div class="form-group">
-              <label for="checkout">Check-out Date</label>
-              <input type="date" id="checkout" name="checkout" required />
+            <div class="date-summary">
+              <div class="date-summary-item">
+                <span class="ds-label">Check-in</span>
+                <span class="ds-value empty" id="checkinDisplay">Select date</span>
+              </div>
+              <div class="date-summary-item">
+                <span class="ds-label">Duration</span>
+                <span class="ds-value empty" id="nightsDisplay">—</span>
+              </div>
+              <div class="date-summary-item">
+                <span class="ds-label">Check-out</span>
+                <span class="ds-value empty" id="checkoutDisplay">Select date</span>
+              </div>
             </div>
+            <input type="hidden" id="checkin" name="checkin" />
+            <input type="hidden" id="checkout" name="checkout" />
           </div>
           <div class="form-row">
             <div class="form-group">
@@ -1319,107 +1483,292 @@
 
 <!-- ═══════════════ SCRIPTS ═══════════════ -->
 <script>
-  // Nav scroll effect
-  const navbar = document.getElementById('navbar');
-  window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
-  });
 
-  // Hamburger menu
-  function toggleMenu() {
-    navbar.classList.toggle('open');
-    document.body.style.overflow = navbar.classList.contains('open') ? 'hidden' : '';
+// ═══ CONFIGURATION ════════════════════════════════════
+const ICAL_URL     = 'https://ical.booking.com/v1/export?t=7d070feb-6e8b-4429-8930-53a99e4823b0';
+const NOTIFY_EMAIL = 'kzoumpouli@gmail.com';
+// Get a free key at https://web3forms.com — enter your email and they send it instantly
+const WEB3FORMS_KEY = '0fbb9097-34e0-48c5-9796-ee59f4f6970b';
+
+// ─── Nav scroll ───────────────────────────────────────
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 60);
+});
+
+// ─── Hamburger menu ───────────────────────────────────
+function toggleMenu() {
+  navbar.classList.toggle('open');
+  document.body.style.overflow = navbar.classList.contains('open') ? 'hidden' : '';
+}
+document.querySelectorAll('.nav-links a').forEach(a => {
+  a.addEventListener('click', () => {
+    navbar.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+});
+
+// ─── Parallax hero ────────────────────────────────────
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', () => {
+  const offset = window.scrollY;
+  if (offset < window.innerHeight) {
+    heroBg.style.transform = `scale(1.05) translateY(${offset * 0.25}px)`;
   }
-  document.querySelectorAll('.nav-links a').forEach(a => {
-    a.addEventListener('click', () => {
-      navbar.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
+});
 
-  // Parallax hero
-  const heroBg = document.getElementById('heroBg');
-  window.addEventListener('scroll', () => {
-    const offset = window.scrollY;
-    if (offset < window.innerHeight) {
-      heroBg.style.transform = `scale(1.05) translateY(${offset * 0.25}px)`;
+// ─── Lightbox ─────────────────────────────────────────
+function openLightbox(el) {
+  const src = el.querySelector('img').src;
+  document.getElementById('lightboxImg').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ─── Fade-in on scroll ────────────────────────────────
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.opacity = '1';
+      entry.target.style.transform = 'translateY(0)';
+      observer.unobserve(entry.target);
     }
   });
+}, { threshold: 0.1 });
+document.querySelectorAll('.place-card, .review-card, .amenity-item').forEach(el => {
+  el.style.opacity = '0';
+  el.style.transform = 'translateY(24px)';
+  el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+  observer.observe(el);
+});
 
-  // Lightbox
-  function openLightbox(el) {
-    const src = el.querySelector('img').src;
-    document.getElementById('lightboxImg').src = src;
-    document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
+// ═══ iCal fetch + parse ═══════════════════════════════
+async function fetchBookedRanges() {
+  const proxy = 'https://corsproxy.io/?' + encodeURIComponent(ICAL_URL);
+  try {
+    const ctrl  = new AbortController();
+    const timer = setTimeout(() => ctrl.abort(), 7000);
+    const res   = await fetch(proxy, { signal: ctrl.signal });
+    clearTimeout(timer);
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return parseIcal(await res.text());
+  } catch (err) {
+    console.warn('Booking.com iCal sync failed:', err.message);
+    return null;
   }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = '';
+}
+
+function parseIcal(text) {
+  const ranges = [];
+  const blocks = text.split('BEGIN:VEVENT');
+  blocks.shift();
+  for (const block of blocks) {
+    const s = block.match(/DTSTART[^:\r\n]*:?[^\r\n]*?(\d{8})/);
+    const e = block.match(/DTEND[^:\r\n]*:?[^\r\n]*?(\d{8})/);
+    if (s && e) ranges.push({ start: icalDate(s[1]), end: icalDate(e[1]) });
   }
-  document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') closeLightbox();
-  });
+  return ranges;
+}
 
-  // Booking form — sends via mailto
-  function submitBooking(e) {
-    e.preventDefault();
-    const f = e.target;
-    const fname = f.fname.value;
-    const lname = f.lname.value;
-    const email = f.email.value;
-    const checkin = f.checkin.value;
-    const checkout = f.checkout.value;
-    const guests = f.guests.value;
-    const phone = f.phone.value;
-    const message = f.message.value;
+function icalDate(s) {
+  return new Date(+s.slice(0,4), +s.slice(4,6)-1, +s.slice(6,8), 12);
+}
 
-    const subject = encodeURIComponent(`Booking Request – ${fname} ${lname} | ${checkin} to ${checkout}`);
-    const body = encodeURIComponent(
-`New booking request from the Stablus website:
+function noon(d)    { const n = new Date(d); n.setHours(12,0,0,0); return n; }
+function dateKey(d) { return noon(d).toISOString().slice(0,10); }
 
-Name: ${fname} ${lname}
-Email: ${email}
-Phone: ${phone || 'Not provided'}
-Check-in: ${checkin}
-Check-out: ${checkout}
-Guests: ${guests}
+function isBooked(d, ranges) {
+  const t = noon(d).getTime();
+  return ranges.some(r => t >= noon(r.start).getTime() && t < noon(r.end).getTime());
+}
 
-Message:
-${message || 'None'}
-`);
+// ═══ Calendar ═════════════════════════════════════════
+const cal = {
+  year: new Date().getFullYear(), month: new Date().getMonth(),
+  checkIn: null, checkOut: null,
+  ranges: [], fetchFailed: false,
+};
 
-    window.location.href = `mailto:pgerolymtrader@gmail.com?subject=${subject}&body=${body}`;
+const MONTH_NAMES = ['January','February','March','April','May','June',
+                     'July','August','September','October','November','December'];
+const DAY_NAMES   = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
+function renderCal() {
+  const wrap = document.getElementById('bookingCal');
+  if (!wrap) return;
+  const today    = noon(new Date());
+  const firstDow = new Date(cal.year, cal.month, 1).getDay();
+  const daysInM  = new Date(cal.year, cal.month + 1, 0).getDate();
+  const ciKey    = cal.checkIn  ? dateKey(cal.checkIn)  : null;
+  const coKey    = cal.checkOut ? dateKey(cal.checkOut) : null;
+  const prevDisabled = cal.year === today.getFullYear() && cal.month === today.getMonth();
+
+  let cells = '';
+  for (let i = 0; i < firstDow; i++) cells += '<div class="cal-day empty"></div>';
+  for (let d = 1; d <= daysInM; d++) {
+    const date = new Date(cal.year, cal.month, d, 12);
+    const key  = dateKey(date);
+    const past = date < today;
+    const bkd  = !past && isBooked(date, cal.ranges);
+    let cls = 'cal-day';
+    if (past)        cls += ' past';
+    else if (bkd)    cls += ' unavailable';
+    if (date.getTime() === today.getTime()) cls += ' today';
+    if (key === ciKey) cls += ' selected-start';
+    if (key === coKey) cls += ' selected-end';
+    if (ciKey && coKey && key > ciKey && key < coKey) cls += ' in-range';
+    const attrs = (!past && !bkd)
+      ? 'onclick="calClick(\'' + key + '\')" tabindex="0" role="button"'
+      : 'aria-disabled="true"';
+    cells += '<div class="' + cls + '" ' + attrs + '>' + d + '</div>';
+  }
+
+  wrap.innerHTML =
+    '<div class="cal-header">' +
+      '<button class="cal-nav" onclick="calNav(-1)"' + (prevDisabled ? ' disabled' : '') + ' aria-label="Previous month">&#8249;</button>' +
+      '<span class="cal-month-label">' + MONTH_NAMES[cal.month] + ' ' + cal.year + '</span>' +
+      '<button class="cal-nav" onclick="calNav(1)" aria-label="Next month">&#8250;</button>' +
+    '</div>' +
+    '<div class="cal-weekdays">' + DAY_NAMES.map(function(n){ return '<span>' + n + '</span>'; }).join('') + '</div>' +
+    '<div class="cal-grid">' + cells + '</div>' +
+    '<div class="cal-legend">' +
+      '<div class="cal-legend-item"><div class="cal-legend-swatch" style="background:var(--navy)"></div>Selected</div>' +
+      '<div class="cal-legend-item"><div class="cal-legend-swatch" style="background:rgba(191,163,122,0.3)"></div>Your stay</div>' +
+      '<div class="cal-legend-item"><div class="cal-legend-swatch" style="background:#f5f3ef;border:1px solid #ddd"></div>Unavailable</div>' +
+    '</div>' +
+    (cal.fetchFailed ? '<div class="cal-fetch-error">&#9888; Live availability could not load — booked dates may not be shown.</div>' : '');
+}
+
+function calNav(dir) {
+  cal.month += dir;
+  if (cal.month < 0)  { cal.month = 11; cal.year--; }
+  if (cal.month > 11) { cal.month = 0;  cal.year++; }
+  renderCal();
+}
+
+function calClick(key) {
+  const date = new Date(key + 'T12:00:00');
+  if (!cal.checkIn || (cal.checkIn && cal.checkOut)) {
+    cal.checkIn = date; cal.checkOut = null;
+  } else if (date <= cal.checkIn) {
+    cal.checkIn = date; cal.checkOut = null;
+  } else {
+    const blocked = cal.ranges.some(function(r) {
+      return noon(r.start).getTime() < noon(date).getTime() &&
+             noon(r.end).getTime()   > noon(cal.checkIn).getTime();
+    });
+    if (blocked) { cal.checkIn = date; cal.checkOut = null; }
+    else           cal.checkOut = date;
+  }
+  updateHiddenInputs();
+  updateDateSummary();
+  renderCal();
+}
+
+function updateHiddenInputs() {
+  var ci = document.getElementById('checkin');
+  var co = document.getElementById('checkout');
+  if (ci) ci.value = cal.checkIn  ? dateKey(cal.checkIn)  : '';
+  if (co) co.value = cal.checkOut ? dateKey(cal.checkOut) : '';
+}
+
+function updateDateSummary() {
+  var opts = { day:'numeric', month:'short', year:'numeric' };
+  var fmt  = function(d) { return d ? d.toLocaleDateString('en-GB', opts) : null; };
+  var ciEl = document.getElementById('checkinDisplay');
+  var coEl = document.getElementById('checkoutDisplay');
+  var ntEl = document.getElementById('nightsDisplay');
+  if (ciEl) { ciEl.textContent = fmt(cal.checkIn)  || 'Select date'; ciEl.className = 'ds-value' + (cal.checkIn  ? '' : ' empty'); }
+  if (coEl) { coEl.textContent = fmt(cal.checkOut) || 'Select date'; coEl.className = 'ds-value' + (cal.checkOut ? '' : ' empty'); }
+  if (ntEl) {
+    if (cal.checkIn && cal.checkOut) {
+      var n = Math.round((cal.checkOut - cal.checkIn) / 86400000);
+      ntEl.textContent = n + ' night' + (n !== 1 ? 's' : '');
+      ntEl.className = 'ds-value';
+    } else { ntEl.textContent = '—'; ntEl.className = 'ds-value empty'; }
+  }
+}
+
+// ═══ Form submission ══════════════════════════════════
+async function submitBooking(e) {
+  e.preventDefault();
+  var f   = e.target;
+  var btn = f.querySelector('[type="submit"]');
+
+  if (!cal.checkIn || !cal.checkOut) {
+    alert('Please select your check-in and check-out dates on the calendar.');
+    document.getElementById('bookingCal').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  var fname   = f.fname.value.trim();
+  var lname   = f.lname.value.trim();
+  var email   = f.email.value.trim();
+  var checkin = dateKey(cal.checkIn);
+  var checkout= dateKey(cal.checkOut);
+  var guests  = f.guests.value;
+  var phone   = f.phone.value.trim() || 'Not provided';
+  var message = f.message.value.trim() || 'None';
+  var nights  = Math.round((cal.checkOut - cal.checkIn) / 86400000);
+
+  btn.textContent = 'Sending…';
+  btn.disabled    = true;
+
+  if (WEB3FORMS_KEY === 'YOUR_WEB3FORMS_KEY') {
+    var subject = encodeURIComponent('Booking Request – ' + fname + ' ' + lname + ' | ' + checkin + ' to ' + checkout);
+    var body    = encodeURIComponent('New booking request from the Stablus website:\n\nName:      ' + fname + ' ' + lname + '\nEmail:     ' + email + '\nPhone:     ' + phone + '\nCheck-in:  ' + checkin + '\nCheck-out: ' + checkout + '\nNights:    ' + nights + '\nGuests:    ' + guests + '\n\nMessage:\n' + message);
+    window.location.href = 'mailto:' + NOTIFY_EMAIL + '?subject=' + subject + '&body=' + body;
     f.style.display = 'none';
     document.getElementById('formSuccess').style.display = 'block';
+    return;
   }
 
-  // Set min date for booking inputs
-  const today = new Date().toISOString().split('T')[0];
-  document.getElementById('checkin').min = today;
-  document.getElementById('checkout').min = today;
-  document.getElementById('checkin').addEventListener('change', function() {
-    document.getElementById('checkout').min = this.value;
-  });
-
-  // Fade-in on scroll
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
-      }
+  try {
+    var res = await fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+      body: JSON.stringify({
+        access_key: WEB3FORMS_KEY,
+        subject:    'Stablus Booking Request – ' + fname + ' ' + lname + ' | ' + checkin + ' → ' + checkout,
+        from_name:  fname + ' ' + lname,
+        reply_to:   email,
+        'Name':     fname + ' ' + lname,
+        'Email':    email,
+        'Phone':    phone,
+        'Check-in':  checkin,
+        'Check-out': checkout,
+        'Nights':    nights + ' night' + (nights !== 1 ? 's' : ''),
+        'Guests':    guests,
+        'Message':   message,
+        botcheck: '',
+      }),
     });
-  }, { threshold: 0.1 });
+    var data = await res.json();
+    if (data.success) {
+      f.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else throw new Error(data.message || 'Unknown error');
+  } catch (err) {
+    console.error('Submission error:', err);
+    btn.textContent = 'Send Booking Request';
+    btn.disabled    = false;
+    alert('There was a problem sending your request. Please try again or email us directly.');
+  }
+}
 
-  document.querySelectorAll('.place-card, .review-card, .amenity-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+// ═══ Init calendar ════════════════════════════════════
+(async function() {
+  var ranges      = await fetchBookedRanges();
+  cal.ranges      = ranges !== null ? ranges : [];
+  cal.fetchFailed = ranges === null;
+  renderCal();
+}());
+
 </script>
 
 </body>
