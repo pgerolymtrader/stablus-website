@@ -1489,6 +1489,9 @@ const ICAL_URL     = 'https://ical.booking.com/v1/export?t=7d070feb-6e8b-4429-89
 const NOTIFY_EMAIL = 'kzoumpouli@gmail.com';
 // Get a free key at https://web3forms.com — enter your email and they send it instantly
 const WEB3FORMS_KEY = '0fbb9097-34e0-48c5-9796-ee59f4f6970b';
+// After deploying calendar-worker.js to Cloudflare Workers, paste your worker URL here:
+// e.g. 'https://stablus-cal.YOUR-NAME.workers.dev'
+const WORKER_URL = 'https://shiny-cloud-1db1.pgerolymtrader.workers.dev';
 
 // ─── Nav scroll ───────────────────────────────────────
 const navbar = document.getElementById('navbar');
@@ -1549,11 +1552,14 @@ document.querySelectorAll('.place-card, .review-card, .amenity-item').forEach(el
 
 // ═══ iCal fetch + parse ═══════════════════════════════
 async function fetchBookedRanges() {
-  const proxy = 'https://corsproxy.io/?' + encodeURIComponent(ICAL_URL);
+  if (!WORKER_URL) {
+    console.warn('WORKER_URL not set — deploy calendar-worker.js to Cloudflare Workers first.');
+    return null;
+  }
   try {
     const ctrl  = new AbortController();
     const timer = setTimeout(() => ctrl.abort(), 7000);
-    const res   = await fetch(proxy, { signal: ctrl.signal });
+    const res   = await fetch(WORKER_URL, { signal: ctrl.signal });
     clearTimeout(timer);
     if (!res.ok) throw new Error('HTTP ' + res.status);
     return parseIcal(await res.text());
