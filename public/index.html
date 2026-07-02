@@ -9,13 +9,13 @@
   <meta name="description" content="Stablus is a charming guest cottage in the village of Pagoi, Corfu, Greece. Experience authentic island living in a peaceful, elegant retreat on the Ionian coast." />
   <meta name="keywords" content="Stablus, cottage, Corfu, Pagoi, Greece, holiday rental, Ionian Islands, accommodation, guest house" />
   <meta name="author" content="Stablus Cottage" />
-  <link rel="canonical" href="https://www.stablus-corfu.com" />
+  <link rel="canonical" href="https://stablus-cottage.com" />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Stablus – Guest Cottage in Pagoi, Corfu" />
   <meta property="og:description" content="A peaceful, elegant retreat in the village of Pagoi, Corfu. Book direct or through Booking.com." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="photos/outside.jpg" />
+  <meta property="og:image" content="https://stablus-cottage.com/photos/outside.jpg" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -457,6 +457,70 @@
       width: 100%;
       height: 200px;
       object-fit: cover;
+    }
+    .place-carousel {
+      position: relative;
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
+    .place-carousel img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+    .place-carousel img.active {
+      opacity: 1;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(0,0,0,0.35);
+      color: #fff;
+      font-size: 16px;
+      line-height: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      z-index: 2;
+      transition: opacity 0.25s ease, background 0.25s ease;
+    }
+    .place-carousel:hover .carousel-btn { opacity: 1; }
+    .carousel-btn:hover { background: rgba(0,0,0,0.6); }
+    .carousel-prev { left: 8px; }
+    .carousel-next { right: 8px; }
+    .carousel-dots {
+      position: absolute;
+      bottom: 10px;
+      left: 0;
+      right: 0;
+      z-index: 2;
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+    }
+    .carousel-dots .dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.55);
+      cursor: pointer;
+      transition: background 0.25s ease, transform 0.25s ease;
+    }
+    .carousel-dots .dot.active {
+      background: #fff;
+      transform: scale(1.3);
     }
     .place-card-body {
       padding: 24px;
@@ -1010,7 +1074,7 @@
       <div class="about-image-wrap">
         <img src="photos/livingroom.jpg" alt="Stablus Cottage interior" loading="lazy" />
         <div class="about-image-badge">
-          <span class="num">★ 9.4</span>
+          <span class="num">★ 9.5</span>
           <span class="label">Guest Score</span>
         </div>
       </div>
@@ -1134,7 +1198,7 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 010 6H9"/></svg>
         </div>
         <h4>Free Parking</h4>
-        <p>On-site private space</p>
+        <p>Available On Site</p>
       </div>
       <!-- Linens -->
       <div class="amenity-item">
@@ -1184,7 +1248,7 @@
         </div>
       </div>
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600&q=80" alt="Sidari Beach" loading="lazy" />
+        <img src="photos/canal-d-amour.jpg" alt="Sidari Beach" loading="lazy" />
         <div class="place-card-body">
           <div class="place-tag">Beach</div>
           <h3>Sidari & Canal d'Amour</h3>
@@ -1193,7 +1257,16 @@
         </div>
       </div>
       <div class="place-card">
-        <img src="https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?w=600&q=80" alt="Corfu Old Town" loading="lazy" />
+        <div class="place-carousel">
+          <img class="active" src="photos/poli-kentro.jpg" alt="Corfu Old Town" loading="lazy" />
+          <img src="photos/poli-kentro-2.jpg" alt="Corfu Old Town" loading="lazy" />
+          <button class="carousel-btn carousel-prev" onclick="placeCarouselNav(this,-1)" aria-label="Previous image">‹</button>
+          <button class="carousel-btn carousel-next" onclick="placeCarouselNav(this,1)" aria-label="Next image">›</button>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="placeCarouselDot(this,0)"></span>
+            <span class="dot" onclick="placeCarouselDot(this,1)"></span>
+          </div>
+        </div>
         <div class="place-card-body">
           <div class="place-tag">Culture</div>
           <h3>Corfu Old Town</h3>
@@ -1235,6 +1308,24 @@
           <h3>Agios Stefanos</h3>
           <p>A peaceful, family-friendly fishing village beach just minutes away. Crystal-clear shallows, excellent snorkelling, and a handful of charming beach tavernas.</p>
           <p class="place-distance">↠ 6 km from Stablus</p>
+        </div>
+      </div>
+      <div class="place-card">
+        <div class="place-carousel">
+          <img class="active" src="photos/kanoni-view.jpg" alt="Kanoni viewpoint" loading="lazy" />
+          <img src="photos/kanoni-view-2.jpg" alt="Kanoni viewpoint" loading="lazy" />
+          <button class="carousel-btn carousel-prev" onclick="placeCarouselNav(this,-1)" aria-label="Previous image">‹</button>
+          <button class="carousel-btn carousel-next" onclick="placeCarouselNav(this,1)" aria-label="Next image">›</button>
+          <div class="carousel-dots">
+            <span class="dot active" onclick="placeCarouselDot(this,0)"></span>
+            <span class="dot" onclick="placeCarouselDot(this,1)"></span>
+          </div>
+        </div>
+        <div class="place-card-body">
+          <div class="place-tag">Viewpoint</div>
+          <h3>Kanoni</h3>
+          <p>One of Corfu's most iconic views — overlooking the tiny islets of Vlacherna Monastery and Mouse Island, framed by the old airport runway and the sea.</p>
+          <p class="place-distance">↠ 38 km from Stablus</p>
         </div>
       </div>
     </div>
@@ -1530,6 +1621,26 @@ function closeLightbox() {
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ─── Place-card image carousels ───────────────────────
+function placeCarouselNav(btn, dir) {
+  const carousel = btn.closest('.place-carousel');
+  const imgs = [...carousel.querySelectorAll('img')];
+  const dots = [...carousel.querySelectorAll('.dot')];
+  const idx = imgs.findIndex(img => img.classList.contains('active'));
+  const next = (idx + dir + imgs.length) % imgs.length;
+  imgs[idx].classList.remove('active');
+  dots[idx]?.classList.remove('active');
+  imgs[next].classList.add('active');
+  dots[next]?.classList.add('active');
+}
+function placeCarouselDot(dot, index) {
+  const carousel = dot.closest('.place-carousel');
+  const imgs = [...carousel.querySelectorAll('img')];
+  const dots = [...carousel.querySelectorAll('.dot')];
+  imgs.forEach((img, i) => img.classList.toggle('active', i === index));
+  dots.forEach((d, i) => d.classList.toggle('active', i === index));
+}
 
 // ─── Fade-in on scroll ────────────────────────────────
 const observer = new IntersectionObserver((entries) => {

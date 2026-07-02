@@ -1,0 +1,18 @@
+{
+	"name": "stablus-website",
+	"compatibility_date": "2026-07-02",
+	"assets": {
+		"directory": "./public",
+		"not_found_handling": "404-page"
+	},
+	"routes": [
+		{
+			"pattern": "stablus-cottage.com",
+			"custom_domain": true
+		},
+		{
+			"pattern": "www.stablus-cottage.com",
+			"custom_domain": true
+		}
+	]
+}
